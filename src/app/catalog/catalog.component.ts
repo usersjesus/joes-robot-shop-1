@@ -8,6 +8,7 @@ import { Iproduct } from './product.model';
 })
 export class CatalogComponent {
   products: Iproduct[];
+  filter: string = "";
 
   constructor() {
     this.products = [
@@ -185,5 +186,11 @@ export class CatalogComponent {
         discount: 0,
       },
     ];
+  }
+
+  getFilteredProducts() {
+    return this.filter === ""
+    ? this.products
+    : this.products.filter((product) => product.category === this.filter);
   }
 }
